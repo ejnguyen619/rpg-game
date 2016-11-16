@@ -13,18 +13,19 @@ public class OpportunistTalent : Ability
     private FragGrenadeAbility fragren;
     private MortarStrikeability mort;
 
-    public OpportunistTalent()
+    public OpportunistTalent(FragGrenadeAbility afragren, MortatStrikeAbility amort, int acd_loss)
     {
-        cd_reduce = 0;
+        cd_reduce = acd_loss;
         target_hit = false;
+        fragren = afragren;
+        mort = amort;
     }
 
-    public void activateOpportunity(FragGrenadeAbility afragren, MortatStrikeAbility amort, int acd_loss)
+    public void activateOpportunity()
     {
         if (incover) {
-            cd_reduce = acd_loss;
-            afragren.Cooldown = afragren.Cooldown - cd_reduce;
-            amort.Cooldown = amort.Cooldown - cd_reduce;
+            fragren.Cooldown = fragren.Cooldown - cd_reduce;
+            mort.Cooldown = mort.Cooldown - cd_reduce;
         }
     }
 
